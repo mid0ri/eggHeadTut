@@ -41,6 +41,7 @@
     function startCreating(){
       $scope.inCreateMode = true;
       $scope.inEditMode = false;
+      resetForm();
     }
 
     function startEditing(){
@@ -64,11 +65,32 @@
       return !($scope.inCreateMode) && ($scope.inEditMode);
     }
 
+    // ------------------------------------------------------------------------------------------------------------------
+    // CRUD
+    // ------------------------------------------------------------------------------------------------------------------
+    function resetForm(){
+      $scope.newBookmark = {
+        title: "",
+        url: "",
+        category: $scope.currentCategory
+      }
+    }
+
+    function createBookmark(bookmark){
+      bookmark.id = $scope.bookmarks.length;
+      $scope.bookmarks.push(bookmark);
+      resetForm();
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------
+    // Revealing to scope
+    // ------------------------------------------------------------------------------------------------------------------
     $scope.startCreating = startCreating;
     $scope.startEditing = startEditing;
     $scope.cancelCreate = cancelCreate;
     $scope.cancelEdit = cancelEdit;
     $scope.shouldShowCreating = shouldShowCreating;
     $scope.shouldShowEditing = shouldShowEditing;
+    $scope.createBookmark = createBookmark;
   }]);
 })();
