@@ -28,6 +28,8 @@
 
     function setCurrentCategory(category) {
       $scope.currentCategory = category;
+      cancelCreate();
+      cancelEdit();
     }
 
     $scope.isCurrentCategory = isCurrentCategory;
