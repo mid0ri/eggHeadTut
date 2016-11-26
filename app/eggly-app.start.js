@@ -68,6 +68,8 @@
     // ------------------------------------------------------------------------------------------------------------------
     // CRUD
     // ------------------------------------------------------------------------------------------------------------------
+
+
     function resetForm(){
       $scope.newBookmark = {
         title: "",
@@ -82,6 +84,12 @@
       resetForm();
     }
 
+    $scope.editingBookmark = null;
+
+    function setEditBookmark(bookmark){
+      $scope.editingBookmark = bookmark;
+    }
+
     // ------------------------------------------------------------------------------------------------------------------
     // Revealing to scope
     // ------------------------------------------------------------------------------------------------------------------
@@ -92,5 +100,6 @@
     $scope.shouldShowCreating = shouldShowCreating;
     $scope.shouldShowEditing = shouldShowEditing;
     $scope.createBookmark = createBookmark;
+    $scope.setEditBookmark = setEditBookmark;
   }]);
 })();
