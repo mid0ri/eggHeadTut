@@ -99,6 +99,9 @@
       cancelEdit();
     }
 
+    function bookmarkEditActive(bookmarkId){
+      return $scope.editingBookmark !== null && $scope.editingBookmark.id === bookmarkId;
+    }
     // ------------------------------------------------------------------------------------------------------------------
     // Revealing to scope
     // ------------------------------------------------------------------------------------------------------------------
@@ -111,5 +114,6 @@
     $scope.createBookmark = createBookmark;
     $scope.setEditBookmark = setEditBookmark;
     $scope.updateBookmark = updateBookmark;
+    $scope.bookmarkEditActive = bookmarkEditActive;
   }]);
 })();
