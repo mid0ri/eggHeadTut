@@ -54,6 +54,7 @@
     }
 
     function cancelEdit(){
+      $scope.editingBookmark = null;
       $scope.inEditMode = false;
     }
 
@@ -87,7 +88,15 @@
     $scope.editingBookmark = null;
 
     function setEditBookmark(bookmark){
-      $scope.editingBookmark = bookmark;
+      $scope.editingBookmark = angular.copy(bookmark);
+    }
+
+    function updateBookmark(bookmark){
+      var index = _.findIndex($scope.bookmarks, function(b){
+        return b.id === bookmark.id;
+      });
+      $scope.bookmarks[index] = bookmark;
+      cancelEdit();
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -101,5 +110,6 @@
     $scope.shouldShowEditing = shouldShowEditing;
     $scope.createBookmark = createBookmark;
     $scope.setEditBookmark = setEditBookmark;
+    $scope.updateBookmark = updateBookmark;
   }]);
 })();
