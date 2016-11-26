@@ -54,10 +54,19 @@
       $scope.inEditMode = false;
     }
 
+    function shouldShowCreating(){
+      return ($scope.currentCategory !== null) && !($scope.inEditMode);
+    }
+
+    function shouldShowEditing(){
+      return !($scope.inCreateMode) && ($scope.inEditMode);
+    }
+
     $scope.startCreating = startCreating;
     $scope.startEditing = startEditing;
     $scope.cancelCreate = cancelCreate;
     $scope.cancelEdit = cancelEdit;
-    
+    $scope.shouldShowCreating = shouldShowCreating;
+    $scope.shouldShowEditing = shouldShowEditing;
   }]);
 })();
